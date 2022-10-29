@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{6532b8b2-10af-4f8c-88d9-f474111fb2fd}">
+		<property name="name">
+			<value>Ending</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bc7064b8-a29c-4322-9a81-d9d679be7f67}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{64920615-8222-4ed2-af8f-9e89edd0248e}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{64920615-8222-4ed2-af8f-9e89edd0248e}">
+		<property name="minimum">
+			<value>0.5</value>
+		</property>
+		<property name="initialValue">
+			<value>0.5</value>
+		</property>
+		<property name="seekSpeed">
+			<value>8</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{7158f0e1-7290-4aa8-8415-f5cec8003d93}</destination>
+		</relationship>
+	</object>
+	<object class="ADSRModulator" id="{7158f0e1-7290-4aa8-8415-f5cec8003d93}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>cursorPosition</value>
+		</property>
+		<property name="sustainValue">
+			<value>-1</value>
+		</property>
+		<property name="releaseTime">
+			<value>2400</value>
+		</property>
+		<property name="releaseShape">
+			<value>-1.00000048</value>
+		</property>
+		<property name="finalValue">
+			<value>100</value>
+		</property>
+	</object>
+</objects>
