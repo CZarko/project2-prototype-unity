@@ -8,7 +8,7 @@
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{6f88734b-3eac-4a6d-9982-664624dd63a4}</destination>
+			<destination>{45f297a9-6a55-4671-b0ce-58017c5e4459}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{a3756c1e-1574-4dbd-bf69-d5d9e66de700}</destination>
@@ -67,9 +67,6 @@
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{de1c6e36-1585-4bc7-8079-e6a57952a8aa}">
-		<property name="maxVoices">
-			<value>2</value>
-		</property>
 		<property name="maximumDistance">
 			<value>100</value>
 		</property>
@@ -194,6 +191,9 @@
 		<property name="length">
 			<value>12.74</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{40673a76-4791-486c-be61-2b1691bc7ace}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{2451fd63-d8b2-4fe0-99f2-a9a046a7e819}</destination>
 		</relationship>
@@ -301,6 +301,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b8b5186c-3aa0-452f-bfad-cd5408b9130f}" />
+	<object class="RandomizerModulator" id="{40673a76-4791-486c-be61-2b1691bc7ace}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>pitch</value>
+		</property>
+		<property name="amount">
+			<value>1.5</value>
+		</property>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{c6cc75f3-854b-4b5e-a760-c23eb2cb074d}">
 		<relationship name="startPoint">
 			<destination>{81a17296-5e59-4c12-a2a4-01ac568c3478}</destination>
