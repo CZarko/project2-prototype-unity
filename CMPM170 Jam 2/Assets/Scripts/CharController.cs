@@ -19,14 +19,18 @@ public class CharController : MonoBehaviour
 
     Rigidbody rb;
 
+    [Header("Audio")]
+    public int moveAudioLayers;
+    int moveAudioIndex;
     bool soundPlaying;
-    FMOD.Studio.EventInstance boatMove;
+    FMOD.Studio.EventInstance[] boatMove;
+    
     
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
 
-        boatMove = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/boatMove");
+        CreateAudioArray();
     }
 
     private void FixedUpdate()
@@ -54,15 +58,26 @@ public class CharController : MonoBehaviour
     private void PlaySFX()
     {
         bool isMoving = (horzInput != 0 || vertInput != 0);
-        boatMove.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject));
+        boatMove[moveAudioIndex].set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject));
         
         if(!soundPlaying && isMoving){
             soundPlaying = true;
-            boatMove.start();
+            boatMove[moveAudioIndex].start();
         }
         else if(soundPlaying && !isMoving){
             soundPlaying = false;
-            boatMove.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            boatMove[moveAudioIndex].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            moveAudioIndex = (moveAudioIndex + 1) % moveAudioLayers;
         }
+    }
+
+    private void CreateAudioArray(){
+        boatMove = new FMOD.Studio.EventInstance[moveAudioLayers];
+        
+        for(moveAudioIndex = 0; moveAudioIndex < moveAudioLayers; moveAudioIndex++){
+            boatMove[moveAudioIndex] = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/boatMove");
+            boatMove[moveAudioIndex].set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject));
+        }
+        moveAudioIndex = 0;
     }
 }
