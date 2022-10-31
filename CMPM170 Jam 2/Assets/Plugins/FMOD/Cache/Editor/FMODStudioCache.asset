@@ -67,7 +67,7 @@ MonoBehaviour:
   Path: FMOD/jam2fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638027279459332868
+  lastModified: 638028095643595871
   FileSizes:
   - Name: Desktop
     Value: 866
@@ -87,7 +87,7 @@ MonoBehaviour:
   Path: FMOD/jam2fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638027279459262804
+  lastModified: 638028095643595871
   FileSizes:
   - Name: Desktop
     Value: 1608704
@@ -115,7 +115,7 @@ MonoBehaviour:
   - {fileID: -530470597136338530}
   StringsBanks:
   - {fileID: -3640844239610999631}
-  cacheTime: 638027279459332868
+  cacheTime: 638028095643595871
   cacheVersion: 131591
 --- !u!114 &24283075116712882
 MonoBehaviour:
