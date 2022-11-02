@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/PlayerMovementExample.unity
+- path: Assets/Scenes/FishingTest.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
