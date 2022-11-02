@@ -24,8 +24,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 6ff5fba4817767d41a353dce76a7abbe, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _ENABLED
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -100,7 +99,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _Bend: 0.015
+    - _Bend: 0.05
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -112,8 +111,12 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _ENABLED: 1
+    - _ENABLED: 0
     - _EnvironmentReflections: 1
+    - _Float: 0.01
+    - _Float_1: 0.4
+    - _Float_2: 0
+    - _Float_3: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0

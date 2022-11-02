@@ -3,3 +3,4 @@
 *./lld filter=lfs diff=lfs merge=lfs -text
 CMPM170[[:space:]]Jam[[:space:]]2/Library/PackageCache/com.unity.burst@1.7.4/.Runtime/* filter=lfs diff=lfs merge=lfs -text
 CMPM170[[:space:]]Jam[[:space:]]2/Library/PackageCache/com.unity.burst@1.7.4/.Runtime/**/* filter=lfs diff=lfs merge=lfs -text
+CMPM170[[:space:]]Jam[[:space:]]2/Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@2.0.2/data~/**/* filter=lfs diff=lfs merge=lfs -text
