@@ -26,6 +26,8 @@ public class FishBoxController : MonoBehaviour
     bool ableToLose;
     bool timeset;
 
+    public GameObject popOut;
+
     bool jumpInput;
 
     void Start()
@@ -37,7 +39,7 @@ public class FishBoxController : MonoBehaviour
         culTime = 0f;
         transform.position = new Vector3(transform.position.x, Random.Range(minY, maxY), transform.position.y);
         
-        GetComponent<Animation>().Play("Tilt");
+        //GetComponent<Animation>().Play("Tilt");
         
         StartCoroutine(StartBuffer());
     }
@@ -86,12 +88,16 @@ public class FishBoxController : MonoBehaviour
 
         if(ableToLose && distBetween > loseDist){
            Debug.Log("You lose!");
+           popOut.GetComponent<Animation>().Play("PopOut");
+           minY = -999;
         }
 
         if(distBetween < (selfHeight / 2)){
             if(timeset){
                 if(((Time.time - startTime) + culTime) > winTime){
                     Debug.Log("You Win!");
+                    popOut.GetComponent<Animation>().Play("PopOut");
+                    minY = -999;
                 }
             }
             else{
