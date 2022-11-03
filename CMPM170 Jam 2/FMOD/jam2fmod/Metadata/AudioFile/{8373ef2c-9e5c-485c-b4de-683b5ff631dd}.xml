@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8373ef2c-9e5c-485c-b4de-683b5ff631dd}">
+		<property name="assetPath">
+			<value>sfx_fishingAmb.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.0624943310657597</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{297c8ba4-c90e-4e6d-a1b1-58f0b9ca4e89}</destination>
+		</relationship>
+	</object>
+</objects>

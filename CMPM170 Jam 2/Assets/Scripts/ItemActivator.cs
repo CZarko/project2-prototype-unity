@@ -75,7 +75,7 @@ public class ItemActivator : MonoBehaviour
                         x_pos = item.item.transform.position.x;
                         y_pos = item.item.transform.position.y;
                         z_pos = item.item.transform.position.z;
-                        Debug.Log(player.transform.position.z - z_pos);
+                        //Debug.Log(player.transform.position.z - z_pos);
                         item.item.SetActive(false);
                         if((player.transform.position.x - x_pos) > distanceFromPlayer)
                         {
@@ -110,7 +110,7 @@ public class ItemActivator : MonoBehaviour
                     {
                         item.item.SetActive(true);
 
-                        Debug.Log("Hello: 4");
+                        //Debug.Log("Hello: 4");
                     }
                 }
 

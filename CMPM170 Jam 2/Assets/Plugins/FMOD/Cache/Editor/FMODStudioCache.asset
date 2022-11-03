@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8582621515374113925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/fishingAmb
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/fishingAmb
+  Guid:
+    Data1: -1793599763
+    Data2: 1189532679
+    Data3: 417245336
+    Data4: 1337037226
+  Banks:
+  - {fileID: -530470597136338530}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 4992
+--- !u!114 &-8068462790141641901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/lineCast
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/lineCast
+  Guid:
+    Data1: -1726876914
+    Data2: 1264002819
+    Data3: -979633475
+    Data4: 1533411167
+  Banks:
+  - {fileID: -530470597136338530}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-5449010434211836696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,11 +121,38 @@ MonoBehaviour:
   Path: FMOD/jam2fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638029909626338613
+  lastModified: 638030821717621377
   FileSizes:
   - Name: Desktop
-    Value: 916
+    Value: 1090
   Exists: 1
+--- !u!114 &-3266383232635359812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/fishSplash
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/fishSplash
+  Guid:
+    Data1: 485476670
+    Data2: 1297963590
+    Data3: 560782739
+    Data4: 128643524
+  Banks:
+  - {fileID: -530470597136338530}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-530470597136338530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,10 +168,10 @@ MonoBehaviour:
   Path: FMOD/jam2fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638029909626328637
+  lastModified: 638030821717581346
   FileSizes:
   - Name: Desktop
-    Value: 2933696
+    Value: 3057472
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -111,12 +192,16 @@ MonoBehaviour:
   - {fileID: -4659259637791975349}
   - {fileID: 24283075116712882}
   - {fileID: 7814017231022358786}
+  - {fileID: -8068462790141641901}
+  - {fileID: -3266383232635359812}
+  - {fileID: 7828596123078242255}
+  - {fileID: -8582621515374113925}
   EditorParameters: []
   MasterBanks:
   - {fileID: -530470597136338530}
   StringsBanks:
   - {fileID: -3640844239610999631}
-  cacheTime: 638029909626338613
+  cacheTime: 638030821717621377
   cacheVersion: 131591
 --- !u!114 &24283075116712882
 MonoBehaviour:
@@ -168,6 +253,33 @@ MonoBehaviour:
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7828596123078242255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/minigamePress
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/minigamePress
+  Guid:
+    Data1: 552647781
+    Data2: 1269788138
+    Data3: 317052063
+    Data4: -1263145095
+  Banks:
+  - {fileID: -530470597136338530}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20

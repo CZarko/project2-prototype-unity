@@ -13,6 +13,7 @@ public class CharController : MonoBehaviour
     
     float horzInput;
     float vertInput;
+    bool fishInput;
 
     Vector3 moveDirection;
     Vector3 rotDirection;
@@ -24,6 +25,13 @@ public class CharController : MonoBehaviour
     int moveAudioIndex;
     bool soundPlaying;
     FMOD.Studio.EventInstance[] boatMove;
+
+    [Header("Fishing")]
+    public GameObject fishingGame;
+    GameObject currentFishingGame;
+    public float minFishTime;
+    public float maxFishTime;
+    float fishTime;
     
     
     private void Start()
@@ -33,9 +41,14 @@ public class CharController : MonoBehaviour
         CreateAudioArray();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         MyInput();
+        CheckFishingStart(); 
+    }
+    
+    private void FixedUpdate()
+    {
         MovePlayer();
         PlaySFX();
     }
@@ -44,6 +57,7 @@ public class CharController : MonoBehaviour
     {
         horzInput = Input.GetAxisRaw("Horizontal");
         vertInput = Input.GetAxisRaw("Vertical");
+        fishInput = Input.GetKeyDown(KeyCode.Space);
     }
 
     private void MovePlayer()
@@ -71,7 +85,8 @@ public class CharController : MonoBehaviour
         }
     }
 
-    private void CreateAudioArray(){
+    private void CreateAudioArray()
+    {
         boatMove = new FMOD.Studio.EventInstance[moveAudioLayers];
         
         for(moveAudioIndex = 0; moveAudioIndex < moveAudioLayers; moveAudioIndex++){
@@ -79,5 +94,21 @@ public class CharController : MonoBehaviour
             boatMove[moveAudioIndex].set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject));
         }
         moveAudioIndex = 0;
+    }
+
+    private void CheckFishingStart(){
+
+        if(fishInput &&  GameObject.Find("FishingMiniGame(Clone)") == null){
+            fishTime = Random.Range(minFishTime, maxFishTime);
+            Debug.Log("FISHTIME: " + fishTime);
+            StartCoroutine(StartFishingTime(fishTime));
+            RuntimeManager.CreateInstance("event:/SFX/lineCast").start();
+        }
+    }
+
+    IEnumerator StartFishingTime(float timeBuffer)
+    {
+        yield return new WaitForSeconds (timeBuffer);
+        currentFishingGame = Instantiate(fishingGame);
     }
 }

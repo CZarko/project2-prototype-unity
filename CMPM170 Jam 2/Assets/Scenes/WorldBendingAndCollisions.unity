@@ -7412,6 +7412,18 @@ PrefabInstance:
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7367781050118776994, guid: f92a8ebaf91066c448b80787f6c0c4e5, type: 3}
+      propertyPath: fishingGame
+      value: 
+      objectReference: {fileID: 8604830345741275367, guid: 49b01c78fb5f7784d91877ca5e110791, type: 3}
+    - target: {fileID: 7367781050118776994, guid: f92a8ebaf91066c448b80787f6c0c4e5, type: 3}
+      propertyPath: maxFishTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367781050118776994, guid: f92a8ebaf91066c448b80787f6c0c4e5, type: 3}
+      propertyPath: minFishTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7367781050118776994, guid: f92a8ebaf91066c448b80787f6c0c4e5, type: 3}
       propertyPath: moveAudioLayers
       value: 2
       objectReference: {fileID: 0}
