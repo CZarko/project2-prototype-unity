@@ -27,6 +27,7 @@ public class FishBoxController : MonoBehaviour
     bool timeset;
 
     public GameObject popOut;
+    public GameObject toDelete;
 
     bool jumpInput;
 
@@ -88,16 +89,14 @@ public class FishBoxController : MonoBehaviour
 
         if(ableToLose && distBetween > loseDist){
            Debug.Log("You lose!");
-           popOut.GetComponent<Animation>().Play("PopOut");
-           minY = -999;
+           ExitMinigame();
         }
 
         if(distBetween < (selfHeight / 2)){
             if(timeset){
                 if(((Time.time - startTime) + culTime) > winTime){
                     Debug.Log("You Win!");
-                    popOut.GetComponent<Animation>().Play("PopOut");
-                    minY = -999;
+                    ExitMinigame();
                 }
             }
             else{
@@ -111,6 +110,12 @@ public class FishBoxController : MonoBehaviour
         }
     }
 
+    private void ExitMinigame(){
+        popOut.GetComponent<Animation>().Play("PopOut");
+        minY = -999;
+        StartCoroutine(Delete());
+    }
+
     IEnumerator StartBuffer()
     {
         ableToLose = false;
@@ -119,6 +124,11 @@ public class FishBoxController : MonoBehaviour
         Debug.Log("You can lose now!");
     }
 
+    IEnumerator Delete()
+    {
+        yield return new WaitForSeconds (1.0f);
+        Destroy(toDelete);
+    }
     
     
 }
