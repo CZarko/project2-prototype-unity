@@ -393,6 +393,9 @@
 "Assets/Samples/Universal RP/13.1.8/URP Package Samples/SharedAssets/Scripts/FirstPersonController.cs"
 "Assets/Scripts/CharController.cs"
 "Assets/Scripts/DisableIfFar.cs"
+"Assets/Scripts/FishBarController.cs"
+"Assets/Scripts/FishBoxController.cs"
+"Assets/Scripts/FishIconMove.cs"
 "Assets/Scripts/ItemActivator.cs"
 -langversion:9.0
 
