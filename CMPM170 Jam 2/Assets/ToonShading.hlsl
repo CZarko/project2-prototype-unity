@@ -1,6 +1,6 @@
-void ToonShading_float(in float3 Normal, in float RampSmoothness, in float3 ClipSpacePos, in float3 WorldPos, in float4 RampTinting, in float RampOffset, out float3 RampOutput, out float3 Direction) {
+void ToonShading_float(in float3 Normal, in float Smoothness, in float3 ClipSpacePos, in float3 WorldPos, in float4 Tinting, in float Offset, out float3 Output, out float3 Direction) {
     #ifdef SHADERGRAPH_PREVIEW
-      RampOutput = float3(0.5,0.5,0);
+      Output = float3(0.5,0.5,0);
       Direction = float3(0.5,0.5,0);
     #else
       #if SHADOWS_SCREEN
@@ -17,11 +17,11 @@ void ToonShading_float(in float3 Normal, in float RampSmoothness, in float3 Clip
 
       half d = dot(Normal, light.direction) * 0.5 + 0.5;
 
-      half ramp = smoothstep(RampOffset, RampOffset + RampSmoothness, d);
+      half ramp = smoothstep(Offset, Offset + Smoothness, d);
 
       ramp *= light.shadowAttenuation;
 
-      RampOutput = light.color * (ramp + RampTinting);
+      Output = light.color * (ramp + Tinting);
 
       Direction = light.direction;
     #endif
