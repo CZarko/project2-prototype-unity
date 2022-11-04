@@ -145,10 +145,10 @@ MonoBehaviour:
   Path: FMOD/jam2fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638030991559018494
+  lastModified: 638031230938241826
   FileSizes:
   - Name: Desktop
-    Value: 1254
+    Value: 1294
   Exists: 1
 --- !u!114 &-3266383232635359812
 MonoBehaviour:
@@ -216,10 +216,10 @@ MonoBehaviour:
   Path: FMOD/jam2fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638030991559008474
+  lastModified: 638031230938201933
   FileSizes:
   - Name: Desktop
-    Value: 3430432
+    Value: 3442816
   Exists: 1
 --- !u!114 &-28854031169233869
 MonoBehaviour:
@@ -274,13 +274,14 @@ MonoBehaviour:
   - {fileID: -8582621515374113925}
   - {fileID: 2883619077113715513}
   - {fileID: -28854031169233869}
+  - {fileID: 2790880646719512978}
   EditorParameters:
   - {fileID: -8937287370516936507}
   MasterBanks:
   - {fileID: -530470597136338530}
   StringsBanks:
   - {fileID: -3640844239610999631}
-  cacheTime: 638030991559018494
+  cacheTime: 638031230938241826
   cacheVersion: 131591
 --- !u!114 &24283075116712882
 MonoBehaviour:
@@ -334,6 +335,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &2790880646719512978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/whipSound
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/whipSound
+  Guid:
+    Data1: 319967239
+    Data2: 1248179493
+    Data3: -2036548216
+    Data4: -1013957478
+  Banks:
+  - {fileID: -530470597136338530}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &2883619077113715513
 MonoBehaviour:
   m_ObjectHideFlags: 0

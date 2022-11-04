@@ -11,7 +11,7 @@ public class CharController : MonoBehaviour
     public float rotSpeed;
 
     public Transform orientation;
-    
+
     float horzInput;
     float vertInput;
     bool fishInput;
@@ -30,12 +30,18 @@ public class CharController : MonoBehaviour
     [Header("Fishing")]
     public GameObject fishingGame;
     GameObject currentFishingGame;
+
     public float minFishTime;
     public float maxFishTime;
+    public float minFishTimeHole;
+    public float maxFishTimeHole;
+    float minFishTimeCur;
+    float maxFishTimeCur;
+
     float fishTime;
     bool waitingForFish;
-    
-    
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -43,6 +49,8 @@ public class CharController : MonoBehaviour
         System.DateTime curTime = System.DateTime.Now;
         Random.seed = (int)curTime.Ticks;
 
+        minFishTimeCur = minFishTime;
+        maxFishTimeCur = maxFishTime;
 
         CreateAudioArray();
     }
@@ -50,9 +58,9 @@ public class CharController : MonoBehaviour
     private void Update()
     {
         MyInput();
-        CheckFishingStart(); 
+        CheckFishingStart();
     }
-    
+
     private void FixedUpdate()
     {
         MovePlayer();
@@ -79,12 +87,14 @@ public class CharController : MonoBehaviour
     {
         bool isMoving = (horzInput != 0 || vertInput != 0);
         boatMove[moveAudioIndex].set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject));
-        
-        if(!soundPlaying && isMoving){
+
+        if (!soundPlaying && isMoving)
+        {
             soundPlaying = true;
             boatMove[moveAudioIndex].start();
         }
-        else if(soundPlaying && !isMoving){
+        else if (soundPlaying && !isMoving)
+        {
             soundPlaying = false;
             boatMove[moveAudioIndex].stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             moveAudioIndex = (moveAudioIndex + 1) % moveAudioLayers;
@@ -94,43 +104,72 @@ public class CharController : MonoBehaviour
     private void CreateAudioArray()
     {
         boatMove = new FMOD.Studio.EventInstance[moveAudioLayers];
-        
-        for(moveAudioIndex = 0; moveAudioIndex < moveAudioLayers; moveAudioIndex++){
+
+        for (moveAudioIndex = 0; moveAudioIndex < moveAudioLayers; moveAudioIndex++)
+        {
             boatMove[moveAudioIndex] = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/boatMove");
             boatMove[moveAudioIndex].set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(this.gameObject));
         }
         moveAudioIndex = 0;
     }
 
-    private void CheckFishingStart(){
+    private void CheckFishingStart()
+    {
 
-        if(fishInput && GameObject.Find("FishingMiniGame(Clone)") == null){
-            if(!waitingForFish){
+        if (fishInput && GameObject.Find("FishingMiniGame(Clone)") == null)
+        {
+            if (!waitingForFish)
+            {
                 StartFishing();
             }
-            else{
+            else
+            {
                 StartFishing();
             }
         }
 
-        if(horzInput != 0  || vertInput != 0){
+        if (horzInput != 0 || vertInput != 0)
+        {
+            if (waitingForFish == true)
+            {
+                RuntimeManager.CreateInstance("event:/SFX/whipSound").start();
+            }
             waitingForFish = false;
             fishTime = 0f;
         }
     }
 
-    private void StartFishing(){
-        fishTime = Random.Range(minFishTime, maxFishTime);
+    private void StartFishing()
+    {
+        fishTime = Random.Range(minFishTimeCur, maxFishTimeCur);
         Debug.Log("FISHTIME: " + fishTime);
         StartCoroutine(StartFishingTime(fishTime));
         RuntimeManager.CreateInstance("event:/SFX/lineCast").start();
         waitingForFish = true;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "FishingHole")
+        {
+            Debug.Log("In fishing hole");
+            minFishTimeCur = minFishTimeHole;
+            maxFishTimeCur = maxFishTimeHole;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        Debug.Log("Out of fishing hole");
+        minFishTimeCur = minFishTime;
+        maxFishTimeCur = maxFishTime;
+    }
+
     IEnumerator StartFishingTime(float timeBuffer)
     {
-        yield return new WaitForSeconds (timeBuffer);
-        if(timeBuffer == fishTime){
+        yield return new WaitForSeconds(timeBuffer);
+        if (timeBuffer == fishTime)
+        {
             currentFishingGame = Instantiate(fishingGame);
             waitingForFish = false;
         }

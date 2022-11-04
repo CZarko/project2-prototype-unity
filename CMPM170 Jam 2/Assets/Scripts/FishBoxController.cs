@@ -127,8 +127,13 @@ public class FishBoxController : MonoBehaviour
     private void ExitMinigame(bool winCondition){
         popOut.GetComponent<Animation>().Play("PopOut");
         reelAmb.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
-        if(winCondition){
+        if (winCondition)
+        {
             RuntimeManager.CreateInstance("event:/SFX/fishSplash").start();
+        }
+        else
+        {
+            RuntimeManager.CreateInstance("event:/SFX/whipSound").start();
         }
         minY = -999;
         RuntimeManager.CreateInstance("event:/MUS/changeToOverworld").start();
