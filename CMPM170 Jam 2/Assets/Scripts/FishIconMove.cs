@@ -16,6 +16,11 @@ public class FishIconMove : MonoBehaviour
     {
         orgPos = this.transform.position.y;
         transform.position = new Vector3(transform.position.x, transform.position.y + Random.Range(initOffset, -initOffset), transform.position.y);
+        
+        rate *= (Random.value * 4) - 2;
+        amount *= (Random.value * 4) - 2;
+        rate2 *= (Random.value * 4) - 2;
+        amount2 *= (Random.value * 4) - 2;
     }
 
     void Update()

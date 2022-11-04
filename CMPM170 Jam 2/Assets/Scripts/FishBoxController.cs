@@ -43,10 +43,15 @@ public class FishBoxController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         jumpForce = new Vector2(0f, jumpHeight);
         culTime = 0f;
-        transform.position = new Vector3(transform.position.x, Random.Range(minY, maxY), transform.position.y);
+        transform.position = new Vector3(transform.position.x, Random.Range(0, maxY), transform.position.y);
+        Debug.Log("Pos : " + transform.position.y);
+        Debug.Log("Rand : " + Random.Range(minY, maxY));
         
         reelAmb = FMODUnity.RuntimeManager.CreateInstance("event:/SFX/fishingAmb");
+        RuntimeManager.CreateInstance("event:/MUS/changeToFishing").start();
         reelAmb.start();
+
+        startTime = Time.time;
         
         StartCoroutine(StartBuffer());
     }
@@ -97,14 +102,14 @@ public class FishBoxController : MonoBehaviour
         float distBetween = Mathf.Abs(this.transform.position.y - fishIcon.transform.position.y);
 
         if(ableToLose && distBetween > loseDist){
-           Debug.Log("You lose!");
+           //Debug.Log("You lose!");
            ExitMinigame(false);
         }
 
-        if(distBetween < (selfHeight / 4)){
+        if(distBetween <= (selfHeight / 4)){
             if(timeset){
                 if(((Time.time - startTime) + culTime) > winTime){
-                    Debug.Log("You Win!");
+                    //Debug.Log("You Win!");
                     ExitMinigame(true);
                 }
             }
@@ -123,9 +128,10 @@ public class FishBoxController : MonoBehaviour
         popOut.GetComponent<Animation>().Play("PopOut");
         reelAmb.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         if(winCondition){
-
+            RuntimeManager.CreateInstance("event:/SFX/fishSplash").start();
         }
         minY = -999;
+        RuntimeManager.CreateInstance("event:/MUS/changeToOverworld").start();
         StartCoroutine(Delete());
     }
 
@@ -141,7 +147,7 @@ public class FishBoxController : MonoBehaviour
         ableToLose = false;
         yield return new WaitForSeconds (3.0f);
         ableToLose = true;
-        Debug.Log("You can lose now!");
+        //Debug.Log("You can lose now!");
     }
 
     IEnumerator Delete()

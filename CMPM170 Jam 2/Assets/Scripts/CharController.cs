@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
+
 public class CharController : MonoBehaviour
 {
     [Header("Movement")]
@@ -32,11 +33,16 @@ public class CharController : MonoBehaviour
     public float minFishTime;
     public float maxFishTime;
     float fishTime;
+    bool waitingForFish;
     
     
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        waitingForFish = false;
+        System.DateTime curTime = System.DateTime.Now;
+        Random.seed = (int)curTime.Ticks;
+
 
         CreateAudioArray();
     }
@@ -98,17 +104,35 @@ public class CharController : MonoBehaviour
 
     private void CheckFishingStart(){
 
-        if(fishInput &&  GameObject.Find("FishingMiniGame(Clone)") == null){
-            fishTime = Random.Range(minFishTime, maxFishTime);
-            Debug.Log("FISHTIME: " + fishTime);
-            StartCoroutine(StartFishingTime(fishTime));
-            RuntimeManager.CreateInstance("event:/SFX/lineCast").start();
+        if(fishInput && GameObject.Find("FishingMiniGame(Clone)") == null){
+            if(!waitingForFish){
+                StartFishing();
+            }
+            else{
+                StartFishing();
+            }
         }
+
+        if(horzInput != 0  || vertInput != 0){
+            waitingForFish = false;
+            fishTime = 0f;
+        }
+    }
+
+    private void StartFishing(){
+        fishTime = Random.Range(minFishTime, maxFishTime);
+        Debug.Log("FISHTIME: " + fishTime);
+        StartCoroutine(StartFishingTime(fishTime));
+        RuntimeManager.CreateInstance("event:/SFX/lineCast").start();
+        waitingForFish = true;
     }
 
     IEnumerator StartFishingTime(float timeBuffer)
     {
         yield return new WaitForSeconds (timeBuffer);
-        currentFishingGame = Instantiate(fishingGame);
+        if(timeBuffer == fishTime){
+            currentFishingGame = Instantiate(fishingGame);
+            waitingForFish = false;
+        }
     }
 }

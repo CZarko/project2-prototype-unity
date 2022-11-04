@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8604830344307978313}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62.240173, y: -159.09348, z: -173.79675}
+  m_LocalPosition: {x: -112, y: -159.09348, z: -173.79675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -483,7 +483,7 @@ MonoBehaviour:
   bar: {fileID: 8604830345030479302}
   tag: {fileID: 8604830345224196989}
   redBar: {fileID: 8604830345492847486}
-  offset: 0.05
+  offset: 0
 --- !u!1 &8604830345498491913
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +600,7 @@ MonoBehaviour:
   fishIcon: {fileID: 8604830345224196989}
   jumpHeight: 7000
   loseDist: 200
-  winTime: 5
+  winTime: 6
   popOut: {fileID: 8604830344326261350}
   toDelete: {fileID: 8604830345741275367}
 --- !u!111 &8604830345498492019
